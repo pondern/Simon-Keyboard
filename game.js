@@ -91,8 +91,7 @@ const playSequence = () => {
       }
     }
   }
-  
-  
+    
 
 // Function to handle game over
 const gameOver = () => {
@@ -102,7 +101,7 @@ const gameOver = () => {
 
 // Event listeners
 document.addEventListener("keydown", handleKeyPress)
-
+e
 // Initialize the game
 startGame()
 
