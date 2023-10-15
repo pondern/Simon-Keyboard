@@ -1,7 +1,8 @@
-const pianokeyz = document.querySelectorAll(".piano-keys .key")
 const startButton = document.querySelector("#start-button")
+const pianokeyz = document.querySelectorAll(".piano-keys .key")
 const message = document.querySelector("#message")
-const MAX_LEVEL = 12
+const MAX_LEVEL = 10
+
 
 let gameSequence = []
 let playerSequence = []
@@ -18,14 +19,16 @@ const startGame = () => {
     gameStarted = true
     message.textContent = "Level " + (level + 1)
     nextTurn()
+    playTune(gameSequence[0])
 
     startButton.addEventListener("click", () => {
-        // Play the audio here
+        startGame()
         audio.play()
+        
       })
   }
 }
-
+console.log(startGame)
 // Function to generate the next turn
 const nextTurn = () => {
     playerSequence = []
@@ -35,6 +38,7 @@ const nextTurn = () => {
     playSequence()
   }
   
+  console.log(nextTurn)
 
 // Function to add a random key to the game sequence
 const addToSequence = () => {
@@ -45,42 +49,50 @@ const addToSequence = () => {
 console.log(addToSequence)
 // Function to play the game sequence to the player
 const playSequence = () => {
-  let i = 0
-  const interval = setInterval(() => {
-    if (i < gameSequence.length) {
-      playTune(gameSequence[i])
-      i++
-    } else {
-      clearInterval(interval)
-    }
-  }, 1000)
-}
-
-console.log(playSequence)
-console.log(playerSequence)
-
-// Function to handle player's key press
-const handleKeyPress = (e) => {
-  if (gameStarted) {
-    const key = e.key.toUpperCase()
-    playTune(key)
-    playerSequence.push(key)
-
-    if (playerSequence[playerSequence.length - 1] !== gameSequence[playerSequence.length - 1]) {
-      gameOver()
-      return
-    }
-
-    if (playerSequence.length === gameSequence.length) {
-      if (level === MAX_LEVEL) {
-        message.textContent = "You win!"
-        gameStarted = false
+    let i = 0
+    const interval = setInterval(() => {
+      if (i < gameSequence.length) {
+        playTune(gameSequence[i])
+        i++
       } else {
-        setTimeout(nextTurn, 1000)
+        clearInterval(interval)
+        // After playing the sequence, allow the user to start their turn.
+        setTimeout(() => {
+          listenForPlayerInput()
+        }, 500)
+      }
+    }, 1000) // Adjust the interval timing as needed
+  }
+  
+  // Function to start listening for player input
+  const listenForPlayerInput = () => {
+    document.addEventListener("keydown", handleKeyPress)
+  }
+  
+  // Function to handle player's key press
+  const handleKeyPress = (e) => {
+    if (gameStarted) {
+      const key = e.key.toLowerCase()
+      playTune(key)
+      playerSequence.push(key)
+  
+      if (playerSequence[playerSequence.length - 1] !== gameSequence[playerSequence.length - 1]) {
+        gameOver()
+        return
+      }
+  
+      if (playerSequence.length === gameSequence.length) {
+        if (level === MAX_LEVEL) {
+          message.textContent = "You win!"
+          gameStarted = false
+        } else {
+          setTimeout(nextTurn, 1000)
+        }
       }
     }
   }
-}
+  
+  
 
 // Function to handle game over
 const gameOver = () => {
@@ -89,7 +101,6 @@ const gameOver = () => {
 }
 
 // Event listeners
-startButton.addEventListener("click", startGame)
 document.addEventListener("keydown", handleKeyPress)
 
 // Initialize the game
