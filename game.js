@@ -17,7 +17,7 @@ const startGame = () => {
     playerSequence = []
     level = 0
     gameStarted = true
-    message.textContent = "Level " + (level + 1)
+    message.textContent = `Level ${level + 1}`
     nextTurn()
     playTune(gameSequence[0])
 
@@ -101,7 +101,7 @@ const gameOver = () => {
 
 // Event listeners
 document.addEventListener("keydown", handleKeyPress)
-e
+
 // Initialize the game
 startGame()
 
