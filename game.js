@@ -1,7 +1,10 @@
 const startButton = document.querySelector("#start-button")
 const pianokeyz = document.querySelectorAll(".piano-keys .key")
 const message = document.querySelector("#message")
-const MAX_LEVEL = 10
+const modal = document.querySelector('.modal')
+const modalContent = document.querySelector(".modal-content")
+const exitModal = document.querySelector(".modal-close")
+const MAX_LEVEL = 2
 
 
 let gameSequence = []
@@ -86,8 +89,9 @@ const handlePlayerInput = (inputKey) => {
 
   if (playerSequence.length === gameSequence.length) {
     if (level === MAX_LEVEL) {
-      message.textContent = "You win!"
+      modalContent.innerText = "You win!"
       gameStarted = false
+      openModal()
     } else {
       setTimeout(nextTurn, 1000)
     }
@@ -96,8 +100,9 @@ const handlePlayerInput = (inputKey) => {
 
 // Function to handle game over
 const gameOver = () => {
-  message.textContent = "Game Over! Press Start to Play Again"
+  modalContent.innerText = "Game Over! Press Start to Play Again"
   gameStarted = false
+  openModal()
 }
 
 // Event listeners for both 'keydown' and 'click'
@@ -108,3 +113,17 @@ pianoKeys.forEach((key) => {
     handleClick(clickedKey)
   })
 })
+
+// Function to open the modal
+const openModal = () => {
+  modal.classList.add('open');
+}
+
+
+// Function to close the modal
+const closeModal = () => {
+  console.log("clicked")
+  modal.classList.remove('open');
+}
+
+exitModal.addEventListener("click", closeModal)
