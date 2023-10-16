@@ -19,16 +19,15 @@ const startGame = () => {
     gameStarted = true
     message.textContent = `Level ${level + 1}`
     nextTurn()
-    playTune(gameSequence[0])
-
-    startButton.addEventListener("click", () => {
-        startGame()
-        audio.play()
-        
-      })
+    // playTune(gameSequence[0])
   }
 }
-console.log(startGame)
+
+startButton.addEventListener("click", () => {
+  startGame()
+  // audio.play()
+})
+
 // Function to generate the next turn
 const nextTurn = () => {
     playerSequence = []
@@ -38,7 +37,7 @@ const nextTurn = () => {
     playSequence()
   }
   
-  console.log(nextTurn)
+  // console.log(nextTurn)
 
 // Function to add a random key to the game sequence
 const addToSequence = () => {
@@ -46,7 +45,7 @@ const addToSequence = () => {
   gameSequence.push(pianokeyz[randomIndex].dataset.key)
 }
 
-console.log(addToSequence)
+// console.log(addToSequence)
 // Function to play the game sequence to the player
 const playSequence = () => {
     let i = 0
@@ -103,6 +102,6 @@ const gameOver = () => {
 document.addEventListener("keydown", handleKeyPress)
 
 // Initialize the game
-startGame()
+// startGame()
 
 

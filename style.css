@@ -4,6 +4,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Oswald;'
+  
 }
 body {
   display: flex;
@@ -112,4 +113,8 @@ header input {
 .piano-keys .black span {
   bottom: 13px;
   color: #888888;
+}
+#start-button {
+width: 90px;
+padding: 5px;
 }
