@@ -1,4 +1,5 @@
-//lines 1-37 are for piano free play
+// Piano free play here in script.js
+//!! GAME LOGIC in game.js file !!
 
 const pianoKeys = document.querySelectorAll(".piano-keys .key")
 keysCheckbox = document.querySelector(".keys-checkbox input")
@@ -36,7 +37,7 @@ const pressedKey = (e) => {
 keysCheckbox.addEventListener("click", showHideKeys)
 document.addEventListener("keydown", pressedKey)
 
-//!!!!BELOW THIS POINT IS GAME LOGIC */
+
 
 
 
