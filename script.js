@@ -15,7 +15,7 @@ const playTune = (key) => {
     clickedKey.classList.add("active") // adding active class to the clicked key element
     setTimeout(() => { // removing active class after 150 ms from the clicked key element
         clickedKey.classList.remove("active")
-    }, 150)
+    }, 500)
 }
 
 pianoKeys.forEach(key => {

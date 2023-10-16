@@ -86,7 +86,7 @@ header input {
 }
 .piano-keys .black.active {
   box-shadow: inset -5px -10px 10px rgba(255,255,255,0.1);
-  background:linear-gradient(to bottom, #000, #434343);
+  background:linear-gradient(to bottom, #f20e0e, #434343);
 }
 .piano-keys .white {
   height: 230px;
@@ -97,7 +97,7 @@ header input {
 }
 .piano-keys .white.active {
   box-shadow: inset -5px 5px 20px rgba(0,0,0,0.2);
-  background:linear-gradient(to bottom, #fff 0%, #eee 100%);
+  background:linear-gradient(to bottom, #e10808 0%, #eee 100%);
 }
 .piano-keys .key span {
   position: absolute;
