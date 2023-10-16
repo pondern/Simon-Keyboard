@@ -18,14 +18,12 @@ const startGame = () => {
     level = 0
     gameStarted = true
     message.textContent = `Level ${level + 1}`
-    nextTurn()
-    // playTune(gameSequence[0])
+    nextTurn()    
   }
 }
 
 startButton.addEventListener("click", () => {
   startGame()
-  // audio.play()
 })
 
 // Function to generate the next turn
@@ -37,7 +35,6 @@ const nextTurn = () => {
     playSequence()
   }
   
-  // console.log(nextTurn)
 
 // Function to add a random key to the game sequence
 const addToSequence = () => {
@@ -45,7 +42,6 @@ const addToSequence = () => {
   gameSequence.push(pianokeyz[randomIndex].dataset.key)
 }
 
-// console.log(addToSequence)
 // Function to play the game sequence to the player
 const playSequence = () => {
     let i = 0
@@ -63,34 +59,40 @@ const playSequence = () => {
     }, 1000) // Adjust the interval timing as needed
   }
   
-  // Function to start listening for player input
-  const listenForPlayerInput = () => {
-    document.addEventListener("keydown", handleKeyPress)
+ // Function to handle player's key press
+const handleKeyPress = (e) => {
+  if (gameStarted) {
+    const key = e.key.toLowerCase()
+    handlePlayerInput(key)
   }
-  
-  // Function to handle player's key press
-  const handleKeyPress = (e) => {
-    if (gameStarted) {
-      const key = e.key.toLowerCase()
-      playTune(key)
-      playerSequence.push(key)
-  
-      if (playerSequence[playerSequence.length - 1] !== gameSequence[playerSequence.length - 1]) {
-        gameOver()
-        return
-      }
-  
-      if (playerSequence.length === gameSequence.length) {
-        if (level === MAX_LEVEL) {
-          message.textContent = "You win!"
-          gameStarted = false
-        } else {
-          setTimeout(nextTurn, 1000)
-        }
-      }
+}
+
+// Function to handle player's click
+const handleClick = (clickedKey) => {
+  if (gameStarted) {
+    handlePlayerInput(clickedKey)
+  }
+}
+
+// Function to handle player input
+const handlePlayerInput = (inputKey) => {
+  playTune(inputKey)
+  playerSequence.push(inputKey)
+
+  if (playerSequence[playerSequence.length - 1] !== gameSequence[playerSequence.length - 1]) {
+    gameOver()
+    return
+  }
+
+  if (playerSequence.length === gameSequence.length) {
+    if (level === MAX_LEVEL) {
+      message.textContent = "You win!"
+      gameStarted = false
+    } else {
+      setTimeout(nextTurn, 1000)
     }
   }
-    
+}
 
 // Function to handle game over
 const gameOver = () => {
@@ -98,10 +100,11 @@ const gameOver = () => {
   gameStarted = false
 }
 
-// Event listeners
-document.addEventListener("keydown", handleKeyPress)
-
-// Initialize the game
-// startGame()
-
-
+// Event listeners for both 'keydown' and 'click'
+document.addEventListener("keydown", (e) => handleKeyPress(e))
+pianoKeys.forEach((key) => {
+  key.addEventListener("click", () => {
+    const clickedKey = key.dataset.key
+    handleClick(clickedKey)
+  })
+})
