@@ -20,12 +20,15 @@ body {
 }
 .wrapper header {
   display: flex;
-  color: #B2B2B2;
+  color: whitesmoke;
   align-items: center;
   justify-content: space-between;
 }
+#message {
+  font-size: larger;
+}
 header h2 {
-  font-size: 1.6rem;
+  font-size: 1.5rem;
 }
 header .column {
   display: flex;
@@ -117,6 +120,7 @@ header input {
 #start-button {
 width: 90px;
 padding: 5px;
+font-size:large;
 }
 
 .modal {
@@ -164,23 +168,23 @@ padding: 5px;
 }
 
 .modal-container {
-  height: 500px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: white;
-  width: 500px;
-  text-align: center;
-  padding: 15px;
-  position: relative;
+    height: 307px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    width: 716px;
+    text-align: center;
+    padding: 15px;
+    position: relative;
 }
 
 .modal-exit {
-  width: 50px;
-  margin-top: 25px;
+  width: 40px;
+  margin-top: 5px;
   position: absolute;
   top: 10px;
-  right: 10px;
+  right: 15px;
 }
 
