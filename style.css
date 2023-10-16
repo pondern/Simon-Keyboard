@@ -20,7 +20,7 @@ body {
 }
 .wrapper header {
   display: flex;
-  color: whitesmoke;
+  color: #9d9d9df8;
   align-items: center;
   justify-content: space-between;
 }
