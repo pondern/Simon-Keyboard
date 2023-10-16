@@ -4,7 +4,7 @@ const message = document.querySelector("#message")
 const modal = document.querySelector('.modal')
 const modalContent = document.querySelector(".modal-content")
 const exitModal = document.querySelector(".modal-close")
-const MAX_LEVEL = 2
+const MAX_LEVEL = 10
 
 
 let gameSequence = []
