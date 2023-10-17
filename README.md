@@ -8,10 +8,10 @@ You can play at: https://pondern.github.io/Simon-Piano-Game/
 
 This game was built using HTML5, CSS, and Javascript and tested on Chrome.
 
-I started with building the piano keyboard itself in HTML5 and CSS. Once the virtual piano resembled a working piano I began working on the piano's functionality in Javascript. The piano sounds were taken from google drive of piano key sounds tied to letters on the keyboard (https://drive.google.com/file/d/1HISRomgGs_XEpCzBuBLfNsYT19ULyGlT/view). I created two JS files; (1) script.js for functionalilty and free play of the virtual piano, and (2) game.js for the game logic. 
+I started with building the piano keyboard itself in HTML5 and CSS. Once the virtual piano resembled a working piano I began working on the piano's functionality in Javascript. The piano sounds were taken from a google drive of piano key sounds tied to letters on the keyboard (https://drive.google.com/file/d/1HISRomgGs_XEpCzBuBLfNsYT19ULyGlT/view). I created two JS files; (1) script.js for functionalilty and free play of the virtual piano, and (2) game.js for the game logic. 
 
 **_Future planned updates for the project include:_**
 
-* adding song theme options that players can select to learn how to play a song on the piano.
+* adding song melody options that players can select to learn how to play.
 * adding a counter to the screen so players can track progress while they are playing the game.
 * exploring options for the sound files to improve processing when playing the game online.
